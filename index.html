@@ -29,26 +29,26 @@
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/dark-v9',
-            center: [-79.999732, 40.4374],
+            center: [-84.52072, 38.01264],
             zoom: 11
         });
 
         map.on('load', function() {
 
-            map.addSource('trees', {
+            map.addSource('restaurants', {
                 type: 'geojson',
-                data: './docs/trees.geojson'
+                data: './data/restaurants.geojson'
             });
 
             map.addLayer({
-                id: 'trees-heat',
+                id: 'restaurants-heat',
                 type: 'heatmap',
-                source: 'trees',
+                source: 'restaurants',
                 maxzoom: 15,
                 paint: {
                     // increase weight as diameter breast height increases
                     'heatmap-weight': {
-                        property: 'dbh',
+                        property: 'VALUE',
                         type: 'exponential',
                         stops: [
                             [1, 0],
@@ -90,14 +90,14 @@
                 }
             }, 'waterway-label');
             map.addLayer({
-                id: 'trees-point',
+                id: 'restaurants-point',
                 type: 'circle',
-                source: 'trees',
+                source: 'restaurants',
                 minzoom: 14,
                 paint: {
                     // increase the radius of the circle as the zoom level and dbh value increases
                     'circle-radius': {
-                        property: 'dbh',
+                        property: 'VALUE',
                         type: 'exponential',
                         stops: [
                             [{
@@ -119,16 +119,12 @@
                         ]
                     },
                     'circle-color': {
-                        property: 'dbh',
+                        property: 'VALUE',
                         type: 'exponential',
                         stops: [
-                            [0, 'rgba(236,222,239,0)'],
-                            [10, 'rgb(236,222,239)'],
-                            [20, 'rgb(208,209,230)'],
-                            [30, 'rgb(166,189,219)'],
-                            [40, 'rgb(103,169,207)'],
-                            [50, 'rgb(28,144,153)'],
-                            [60, 'rgb(1,108,89)']
+                            [1, 'rgba(236,222,239,0)'],
+                            [2, 'rgb(236,222,239)'],
+                            [3, 'rgb(208,209,230)']
                         ]
                     },
                     'circle-stroke-color': 'white',
@@ -142,10 +138,10 @@
                 }
             }, 'waterway-label');
 
-            map.on('click', 'trees-point', function(e) {
+            map.on('click', 'restaurants-point', function(e) {
                 new mapboxgl.Popup()
                     .setLngLat(e.features[0].geometry.coordinates)
-                    .setHTML('<b>DBH:</b> ' + e.features[0].properties.dbh)
+                    .setHTML('<b>Health Risk:</b> ' + e.features[0].properties.VALUE)
                     .addTo(map);
             });
 
