@@ -1,2 +1,2 @@
 # MAP675-Final-Project-ljmoser83
-This project focuses on the density of restaurants of a variety of types in Lexington, KY. This cultural phenomenon will be displayed as a heatmap.  
+This project focuses on the density of restaurants of a variety of types in Lexington, KY. This cultural phenomenon will be displayed as a heatmap. The inspiration for this dataset and map came from a group of highschool students that I worked with that wanted to explore the inverse relationship between cost of restaurant food and the health impacts on the neighboring community. I have attempted to capture and encode this inverse relationship through the styling and settings of the heatmap.
