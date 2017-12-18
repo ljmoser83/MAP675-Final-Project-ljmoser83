@@ -9,28 +9,23 @@
     <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
 
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.1/mapbox-gl.css' rel='stylesheet' />
-    <style>
-/*
-        body {
-            margin: 0;
-            padding: 0;
-        }
 
-        #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-        }
-*/
-    </style>
 </head>
 
 <body>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.1/mapbox-gl.js'></script>
     <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.12.0/assembly.js"></script>
-<h1 class='prose prose--dark bg-gray txt-l align-center'>Lexington, Kentucky Restaurant Density with <br> Price as an Indicator of Healthy Options</h1>
+<h1 class='prose prose--dark bg-gray txt-xl align-center'>Lexington, Kentucky Restaurant Density with <br> Price as an Indicator of Healthy Options</h1>
     <div id='map' class='viewport-twothirds viewport-full-ml'></div>
+     <div id='legend' class='w180 bg-white absolute bottom left mt18 mr18 round shadow-darken10 px12 py12 txt-s'>
+                <strong class='block mb6 txt-l'>Health Rating</strong>
+                <ul class='ul mb6'>
+         <li><span class=' bg-green mb12 ml12' ><strong>Healthy</strong></span></li>
+         <li><span class=' bg-yellow mb12 ml12' ><strong>Moderately Healthy</strong></span></li>
+         <li><span class=' bg-red mb12 ml12' ><strong>Unhealthy</strong></span></li>
+         
+         </ul>
+            </div>
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibGptb3NlcjgzIiwiYSI6ImNqMG5sNmI1bjAwY3UzM3Q4cXNncGl6NDMifQ.jAX66dC8oy8Mh4IvgF5SPg';
         var map = new mapboxgl.Map({
@@ -128,7 +123,7 @@
                         stops: [
                             [1, 'rgb(51, 204, 51)'],
                             [2, 'rgb(255, 255, 0)'],
-                            [3, 'rgb(255, 51, 0)']
+                            [3, 'rgb(255, 0, 0)']
                         ]
                     },
                     'circle-stroke-color': 'white',
